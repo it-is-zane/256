@@ -12,12 +12,18 @@ function isVisable(element) {
   return visableV && visableH;
 }
 
-function replaceElement(element, url) {
-  fetch(url).then((res) => {
-    if (res.status = 200) {
-      element.outerHTML = res.text();
-    } else {
-      console.error("status", res.status, "on", url)
-    }
-  });
+function replaceOuter(element, url) {
+  fetch(url).then(
+    (res) => res.text().then(
+      (text) => {element.outerHTML = text}
+    )
+  );
+}
+
+function replaceInner(element, url) {
+  fetch(url).then(
+    (res) => res.text().then(
+      (text) => {element.innerHTML = text}
+    )
+  );
 }
