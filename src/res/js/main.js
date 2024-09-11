@@ -1,4 +1,4 @@
-function isVisable(element) {
+function isVisible(element) {
   const rect = element.getBoundingClientRect();
   const visableV = (
     rect.top < window.innerHeight
@@ -27,3 +27,20 @@ function replaceInner(element, url) {
     )
   );
 }
+
+function forEachElement(classname, f) {
+  let elements = document.getElementsByClassName(classname);  
+}
+
+addEventListener("scroll", (event) => {
+  let elements = document.getElementsByClassName("checkvis");
+  let length = elements.length;
+  for (let i = 0; i < length; i++) {
+    if (isVisible(elements[i])) {
+      elements[i].classList.add("visible")
+    }
+    else {
+      elements[i].classList.remove("visible")
+    }
+  }
+})
